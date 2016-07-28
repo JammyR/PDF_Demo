@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+	<RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp" >
+        <ImageButton
+            android:id="@+id/cancel_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_pdf_lastone"
+			android:scaleType="centerCrop" />
+        <ImageButton
+            android:id="@+id/clear_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+             android:layout_toRightOf="@+id/cancel_bt"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_pdf_erasure"
+			android:scaleType="centerCrop" />
+
+		<ImageButton
+            android:id="@+id/confirm_bt"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+			android:src="@drawable/icon_pdf_save"
+			android:scaleType="centerCrop"
+			android:layout_toRightOf="@+id/clear_bt" />
+
+		<ImageButton
+			android:layout_width="55dp"
+			android:layout_height="55dp"
+			android:id="@+id/sign_bt"
+			android:layout_centerVertical="true"
+			android:layout_toRightOf="@+id/confirm_bt"
+			android:layout_toEndOf="@+id/confirm_bt"
+			android:scaleType="centerCrop"
+			android:src="@drawable/icon_pdf_signature" />
+
+	</RelativeLayout>
+
+	<com.example.jammy.pdf_demo.SignatureView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_below="@+id/topBar"
+		android:id="@+id/signView"
+		android:visibility="gone" />
+
+</RelativeLayout>
