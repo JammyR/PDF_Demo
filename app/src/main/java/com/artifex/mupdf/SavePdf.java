@@ -46,7 +46,6 @@ public class SavePdf {
 
     /**
      * 设置放大比例
-     *
      * @param scale
      */
     public void setScale(float scale) {
