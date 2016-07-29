@@ -27,7 +27,6 @@ import java.net.MalformedURLException;
  */
 public class SavePdf {
 
-
     public void setWidthScale(float widthScale) {
         this.widthScale = widthScale;
     }
@@ -101,11 +100,9 @@ public class SavePdf {
             Image img = Image.getInstance(bytes);//将要放到PDF的图片传过来，要设置为byte[]类型
             com.lowagie.text.Rectangle rectangle = reader.getPageSize(pageNum);
             img.setAlignment(1);
-            ////乘显示值和原始值的比值
+            //这里是重点！！！！！设置Image图片大小，需要根据屏幕的分辨率，签名时PDF的放大比例来计算；还有就是当PDF开始显示的时候，他已经做了一次缩放，可以用 rectangle.getWidth() / (bitmap.getWidth() / 2)求得那个放大比
             img.scaleAbsolute(363 * 1.0f * density / 2 / scale * rectangle.getWidth() / (bitmap.getWidth() / 2), 557 * 1.0f * density / 2 / scale * rectangle.getWidth() / (bitmap.getWidth() / 2));
-
-
-            //设置相对位置
+            //这里设置image相对PDF左下角的偏移量，我的做法是得到放大后位置相对于整个PDF的百分比再乘PDF的大小得到他的相对偏移位置
             img.setAbsolutePosition(rectangle.getWidth() * widthScale, rectangle.getHeight() * heightScale);
             over.addImage(img);
             stamp.close();
@@ -133,10 +130,4 @@ public class SavePdf {
         bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
         return baos.toByteArray();
     }
-
-    public static float mmTopx(float mm) {
-        mm = (float) (mm * 3.33);
-        return mm;
-    }
-
 }
